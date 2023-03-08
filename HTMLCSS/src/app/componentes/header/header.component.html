@@ -10,9 +10,41 @@
       <li><a href="#"> <img src="../../../assets/Facebook.png" alt="Facebook" width="40" height="40"></a></li>
       <li><a href="#"> <img src="../../../assets/Instagram.png" alt="Instagram" width="40" height="40"></a></li>
       <li><a href="#"> <img src="../../../assets/Github.png" alt="Github" width="40" height="40"></a></li>
-      <li><button type="button" class="btn btn-outline-light">LOGIN</button></li>
+      <!-- boton que abre el login -->
+      <li><img src="../../../assets/login icono.png" alt="Login" width="40" height="40" data-bs-toggle="modal" data-bs-target="#loginModal">
+      </li>
     </ul>
     
    </div>
+  
+
+
+<!-- Login--> 
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesión</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Nunca compartiremos su email con nadie.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Ingresar</button>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </div>

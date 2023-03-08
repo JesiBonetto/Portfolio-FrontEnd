@@ -14,7 +14,8 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
 import  {  NgCircleProgressModule  }  from  'ng-circle-progress';
 import { SkillsComponent } from './componentes/skills/skills.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
-import { FooterComponent } from './componentes/footer/footer.component' ;
+import { FooterComponent } from './componentes/footer/footer.component';
+import { InicioComponent } from './componentes/inicio/inicio.component' ;
 //tengo que importar HttpClientModule
 
 
@@ -31,6 +32,7 @@ import { FooterComponent } from './componentes/footer/footer.component' ;
     SkillsComponent,
     ProyectosComponent,
     FooterComponent,
+    InicioComponent,
    
   ],
   imports: [
