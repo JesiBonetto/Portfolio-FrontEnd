@@ -1,7 +1,13 @@
-.card{
+/* .card{
     background-color: rgb(156, 155, 161);
     margin-bottom: 2%;
-}
+} */
 .row{
     margin: 5%;
+}
+h3,h5,p{
+    color: gainsboro;
+}
+.row{
+    box-shadow: 2px -2px 5px #999;
 }

@@ -1,0 +1,21 @@
+{
+    "nombre":"Jesica Sabrina",
+    "apellido":"Rosin",
+    "foto": "assets/Jesi.jpeg",
+
+    "educacion":[{
+            "inicio": "Junio de 2022",
+            "fin": "Agosto de 2022",
+            "nivel": "Se Programar"
+            
+    },
+        {
+        "inicio": "Octubre de 2022",
+            "fin": "Mayo de 2023",
+            "nivel": "Yo Programo"
+            
+    }
+
+    ]
+
+}

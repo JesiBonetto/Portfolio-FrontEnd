@@ -9,26 +9,3 @@
    
    
 }
-nav{
-    display: flex;
-    align-items: center;
-    padding: 5%;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    position: absolute;
-    left: 450px;
-    top: 50px;
-
-}
-.menu a{
-    color: white;
-    text-decoration: none;
-}
-a:hover{
-    color: red;
-}
-
-ul li{
-    padding: 5%;
-}
