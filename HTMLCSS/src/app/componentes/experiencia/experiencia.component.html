@@ -1,20 +1,50 @@
 
-<div class="row">
+<div class="row" *ngFor="let experiencia of experiencia">
     <h3>Experiencia</h3>
     <div class="col-lg-1"></div>
     <div class="col-lg-11">
         <ul>
             <li>
-                <h3>Trabajo 1</h3> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis doloremque quaerat recusandae, exercitationem facilis dolorum iure adipisci laboriosam fugit numquam atque est quae dolor nam nulla velit dignissimos modi!</p>
+                <h2>{{experiencia.empresa}}</h2> <p>{{experiencia.descripcion}}</p>
+            </li>
+           <!--  <li>
+                <h3>{{experiencia.empresa}}</h3> <p>{{experiencia.descripcion}}</p>
             </li>
             <li>
-                <h3>Trabajo 2</h3> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis doloremque quaerat recusandae, exercitationem facilis dolorum iure adipisci laboriosam fugit numquam atque est quae dolor nam nulla velit dignissimos modi!</p>
-            </li>
-            <li>
-                <h3>Trabajo 3</h3> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima omnis doloremque quaerat recusandae, exercitationem facilis dolorum iure adipisci laboriosam fugit numquam atque est quae dolor nam nulla velit dignissimos modi!</p>
-            </li>
+                <h3>{{experiencia.empresa}}</h3> <p>{{experiencia.descripcion}}</p>
+            </li> -->
         </ul>
 
     </div>
+    <div class="item-alling-end" >
+        <!-- Boton que abre modal de EDITAR -->
+  <button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#ExperienciaModal"><i class="bi bi-pencil-square"></i>
+    
+  </button>
+  </div>
+
+  <div class="item-alling-end" >
+    <!-- Boton que abre modal de CREAR -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#CrearExperienciaModal"><i class="bi bi-plus-square"></i>
+
+</button>
+</div>
+
+<div class="item-alling-end" >
+    <!-- Boton para eliminar -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal"><i class="bi bi-trash3"></i>
+</button>
+</div>
 
 </div>
+
+<app-agregarexpe
+*ngIf="verBtnAgregar"
+(onAgregarExperiencia)="agregarExperiencia($event)"
+(cerrarBtnAgrExpe)="verBtnAgregar = false"></app-agregarexpe>
+
+<app-editarexpe
+*ngIf="verBtnEditar"
+[experiencia]="selectExperiencia"
+(onEditarExpe)="editarExperiencia($event)"
+(cerrarBtnEditEx)="verBtnEditar = false"></app-editarexpe>

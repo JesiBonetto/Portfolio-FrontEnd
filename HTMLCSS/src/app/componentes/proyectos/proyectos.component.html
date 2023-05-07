@@ -1,8 +1,40 @@
 
-<div class="row">
+<div class="row" *ngFor="let proyecto of proyectos">
     <h3>Proyectos</h3>
     <div>
-        <h5>Elaboración de proyecto de portfolio web.</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque officiis magni repudiandae voluptates? Laudantium quisquam et beatae veritatis iusto id rerum reiciendis, blanditiis iure quis nemo non numquam. Dolorem, facilis.</p>
+        <h5>{{proyecto.nombre}}</h5>
+        <p>{{proyecto.descripcion}}</p>
     </div>
+
+    <div class="item-alling-end" >
+        <!-- Boton que abre modal de EDITAR -->
+  <button type="button" *ngIf="isLogged"   class="btn"  data-bs-toggle="modal" data-bs-target="#ProyectosModal" ><i class="bi bi-pencil-square"></i>
+    
+  </button>
+  </div>
+
+  <div class="item-alling-end" >
+    <!-- Boton que abre modal de CREAR -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#CrearProyectosModal"><i class="bi bi-plus-square"></i>
+
+</button>
 </div>
+
+<div class="item-alling-end" >
+    <!-- Boton para ELIMINAR -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal"><i class="bi bi-trash3"></i>
+</button>
+</div>
+
+</div>
+
+<app-agregarproye
+*ngIf="verBtnAgregar"
+(onAgregarProyecto)="agregarProyectos($event)"
+(cerrarBtnAgrPro)="verBtnAgregar = false"></app-agregarproye>
+
+<app-editarproye
+*ngIf="verBtnEditar"
+[proyectos]="selectProyecto"
+(onEditarProy)="editarProyectos($event)"
+(cerrarBtnEditPro)="verBtnEditar = false"></app-editarproye>

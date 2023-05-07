@@ -1,15 +1,50 @@
-<!-- <div class="form-floating mb-3 col-sm-8">
-    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-    <label for="floatingInput">Email </label>
-  </div>
-  <div class="form-floating col-sm-8">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-    <label for="floatingPassword">Contraseña</label>
-  </div>
 
-  <div>
-    <button type="submit" class="btn btn-primary">Registrarme</button>
-  </div>-->
+<!-- Login--> 
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesión</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="form"  (ngSubmit)="onEnviar($event)">
+      <div class="modal-body">   
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
 
+          <div *ngIf="Email?.errors  && Email?.touched">    
+            <p *ngIf="Email?.hasError('required')" class="text_danger">
+                El email es requerido.
+            </p>
+            <p *ngIf="Email?.hasError('email')" class="text_danger">
+                El formato del email debe ser válido.
+              </p>
+        </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" formControlName="password" id="exampleInputPassword1">
+          </div>
+
+          <!-- Gracias al getter que configuramos en el controlador -->
+    <div *ngIf="Password?.errors  && Password?.touched">
+      <p *ngIf="Password?.hasError('required')" class="text_danger">
+        El password es requerido.
+      </p>
+      <p *ngIf="Password?.errors?.['minlength']"class="text_danger">
+        El password debe ser de 8 o más caracteres.
+      </p>
+    </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Ingresar</button>
+          </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
   
 

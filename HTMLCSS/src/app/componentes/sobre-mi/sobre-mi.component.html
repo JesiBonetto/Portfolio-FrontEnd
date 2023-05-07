@@ -1,17 +1,35 @@
 
-    <div class="row">
+    <div class="row" *ngFor="let persona of persona">
       <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
         <!-- Mi foto-->
-        <img src="../../../assets/Jesi.jpeg"  class="img-fluid" alt="...">
+        <img [src]= persona.foto class="img-fluid" alt="Foto">
   
       </div>
       
-          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2"><h3 id="nombre">{{nombre}} {{apellido}}</h3><h4>Full Stack Developer Jr</h4></div>
+          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2"><h3 id="nombre">{{persona.nombre}}</h3><h4>Full Stack Developer Jr</h4></div>
    <!-- Presentación -->     
   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-      <span><h3>SOBRE MI</h3><h5>Soy Jesica Rosin, tengo 31 años y estudio Desarrollo Web Full Stack en Argentina Programa. Me encanta la programación y me interesa aprender nuevas tecnologías y habilidades. Tengo conocimientos en HTML, CSS, JavaScript y Angular. Uso Git y Github para compartir mi trabajo con otros desarrolladores. Me gusta trabajar en equipo y aprender cosas nuevas para estar al día con la tecnología y los avances en el desarrollo web.</h5></span>
+      <span><h3>SOBRE MI</h3><h5>{{persona.sobre_mi}}</h5></span>
     </div>
-    </div>
+  </div>
+    
+
+    <div class="item-alling-end" >
+      <!-- Boton que abre modal de editar -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#SobreMiModal" (click)="editar"><i class="bi bi-pencil-square"></i> 
+</button>
+</div>
+
+<div class="item-alling-end" >
+  <!-- Boton para eliminar -->
+<button type="button"  *ngIf="isLogged" class="btn"  data-bs-toggle="modal" (click)="delete"><i class="bi bi-trash3" ></i>
+</button>
+</div>
+   <app-editarsobre
+   *ngIf="verBtnEditar"
+  [persona]="selectPersona"
+  (onEditarPers)="editarPersona($event)"
+  (cerrarBtnEditPers)="verBtnEditar = false"></app-editarsobre>
   
     
    

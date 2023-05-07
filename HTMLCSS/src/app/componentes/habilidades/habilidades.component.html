@@ -1,0 +1,125 @@
+<h3>Habilidades</h3>
+<div class="row" *ngFor="let habilidad of habilidades">
+    
+
+    <div class="text-center col-sm-12 col-md-6 col-lg-4">
+        <div>
+    <circle-progress 
+        [percent]= "habilidad.porcentaje"
+        [radius]= " 80 "
+        [showUnits]="false"
+        [title]="habilidad.nombre"
+        [outerStrokeWidth]= " 11 " 
+        [innerStrokeWidth]= " 3 " 
+        [outerStrokeColor]= "habilidad.color" 
+        [innerStrokeColor]= " 'grey' " 
+        [animation]= " true " 
+        [animationDuration]= " 600 ">
+    </circle-progress>
+</div>
+<!-- 
+<div>
+    <circle-progress 
+        [percent]= " habilidad.porcentaje " 
+        [radius]= " 80 "
+        [showUnits]="false"
+        [title]="habilidad.nombre"
+        [outerStrokeWidth]= " 11 " 
+        [innerStrokeWidth]= " 3 " 
+        [outerStrokeColor]= "habilidad.color" 
+        [innerStrokeColor]= " 'grey' " 
+        [animation]= " true " 
+        [animationDuration]= " 600 ">
+    </circle-progress>
+</div>
+<div>
+    <circle-progress 
+        [percent]= " habilidad.porcentaje " 
+        [radius]= " 80 "
+        [showUnits]="false"
+        [title]="habilidad.nombre"
+        [outerStrokeWidth]= " 11 " 
+        [innerStrokeWidth]= " 3 " 
+        [outerStrokeColor]= " habilidad.color " 
+        [innerStrokeColor]= " 'grey' " 
+        [animation]= " true " 
+        [animationDuration]= " 600 ">
+    </circle-progress>
+</div>
+<div>
+    <circle-progress 
+        [percent]= " habilidad.porcentaje " 
+        [radius]= " 80 "
+        [title]="habilidad.nombre"
+        [showUnits]="false"
+        [outerStrokeWidth]= " 11 " 
+        [innerStrokeWidth]= " 3 " 
+        [outerStrokeColor]= " habilidad.color " 
+        [innerStrokeColor]= " 'grey' " 
+        [animation]= " true " 
+        [animationDuration]= " 600 ">
+    </circle-progress>
+</div>
+<div>
+    <circle-progress 
+        [percent]= " habilidad.porcentaje " 
+        [radius]= " 80 "
+        [showUnits]="false"
+        [title]="habilidad.nombre"
+        [outerStrokeWidth]= " 11 " 
+        [innerStrokeWidth]= " 3 " 
+        [outerStrokeColor]= " habilidad.color " 
+        [innerStrokeColor]= " 'grey' " 
+        [animation]= " true " 
+        [animationDuration]= " 600 ">
+    </circle-progress>
+</div>
+<div>
+    <circle-progress 
+        [percent]= " habilidad.porcentaje " 
+        [radius]= " 80 "
+        [showUnits]="false"
+        [title]="habilidad.nombre"
+        [outerStrokeWidth]= " 11 " 
+        [innerStrokeWidth]= " 3 " 
+        [outerStrokeColor]= " habilidad.color " 
+        [innerStrokeColor]= " 'grey' " 
+        [animation]= " true " 
+        [animationDuration]= " 600 ">
+    </circle-progress>
+</div> -->
+</div>
+
+<div class="item-alling-end" >
+    <!-- Boton que abre modal de EDITAR -->
+<button type="button" *ngIf="isLogged"  class="btn" class="editar-btn" data-bs-toggle="modal" data-bs-target="#HabilidadesModal"><i class="bi bi-pencil-square"></i>
+
+</button>
+</div>
+
+<div class="item-alling-end" >
+    <!-- Boton que abre modal de CREAR -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#CrearHabilidadesModal"><i class="bi bi-plus-square"></i>
+
+</button>
+</div>
+
+<div class="item-alling-end" >
+    <!-- Boton para ELIMINAR -->
+<button type="button" *ngIf="isLogged" class="btn" data-bs-toggle="modal"><i class="bi bi-trash3" 
+(click)="delete(habilidad.id!)"></i>
+</button>
+</div>
+</div>
+
+<app-agregarhabi
+*ngIf="verBtnAgregar"
+(onAgregarHabilidad)="agregarHabilidad($event)"
+(cerrarBtnAgrHabi)="verBtnAgregar = false"></app-agregarhabi>
+
+<app-editarhabi
+*ngIf="verBtnEditar"
+[habilidades]="selectHabilidad"
+(onEditarHabi)="editarHabilidad($event)"
+(cerrarBtnEditHab)="verBtnEditar = false"></app-editarhabi>
+

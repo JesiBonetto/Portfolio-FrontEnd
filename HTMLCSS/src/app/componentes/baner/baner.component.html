@@ -4,10 +4,24 @@
       <!-- Foto del baner -->
         <img src="../assets/esta si.jpg" class="img-fluid"  alt="...">
        
-         
-      </div>
-  
-    </div>
-  
-  
 
+        <div class="item-alling-end" >
+          <!-- Boton que abre modal de editar -->
+    <button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#BanerModal"><i class="bi bi-pencil-square"></i>  
+    </button>
+    </div>
+
+    <div class="item-alling-end" >
+      <!-- Boton para eliminar -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal"><i class="bi bi-trash3"></i>
+</button>
+</div>
+      </div>
+      
+    </div>
+
+    <app-editarbaner
+    *ngIf="verBtnEditar"
+  [persona]="selectBaner"
+  (onEditarBa)="editarBaner($event)"
+  (cerrarBtnEditBa)="verBtnEditar = false"></app-editarbaner>

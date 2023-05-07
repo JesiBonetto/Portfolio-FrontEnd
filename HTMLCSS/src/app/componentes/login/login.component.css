@@ -5,3 +5,12 @@
 .btn{
     margin: 2%;
 }
+
+.error{
+    color:red
+  }
+  
+  .border-danger{
+    border-color: red;
+  }
+

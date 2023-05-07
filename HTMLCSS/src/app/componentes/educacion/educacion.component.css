@@ -4,5 +4,8 @@
     box-shadow: 2px -2px 5px #999;
 }
 h2,h3{
-    color: gainsboro;
+    color: rgb(7, 7, 7);
+}
+h3{
+    margin: 5%;
 }
