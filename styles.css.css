@@ -1,8 +1,9 @@
 
-
-body{
-    background-color:darkgrey;
+body{ background-image:url("../../Galaxia.jpg");
 }
+
+
+
 
 header{
     display: flex;
