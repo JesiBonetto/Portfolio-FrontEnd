@@ -13,6 +13,7 @@ export class SobreMiComponent implements OnInit{
 
   isLogged = false;
   persona: Persona[] = [];
+  personas:any;
   verBtnAgregar: boolean = false;
   verBtnEditar: boolean = false;
   selectPersona: any;
@@ -32,6 +33,7 @@ export class SobreMiComponent implements OnInit{
 
     ngOnInit(): void {
       this.verPersona();
+      console.log(localStorage);
       }
 
       verPersona(): void{

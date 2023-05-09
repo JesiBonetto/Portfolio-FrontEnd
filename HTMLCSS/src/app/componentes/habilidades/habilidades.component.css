@@ -5,6 +5,12 @@
 h3{
     color: rgb(73, 72, 72);
 }
-.row{
+.container{
     box-shadow: 2px -2px 5px #999;
+}
+
+.button{
+    display: flex;
+    justify-content:flex-end;
+    align-items: flex-start;
 }

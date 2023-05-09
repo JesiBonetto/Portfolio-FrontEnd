@@ -6,24 +6,28 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Educación</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form (ngSubmit)="onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="form.valid && onEnviar()">
         <div class="modal-body">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Título</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo"  formControlName = "titulo" required>
               </div>
 
               <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Academia</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="academia" class="form-label">Academia</label>
+                <input type="text" class="form-control" id="academia" formControlName = "academia" required >
               </div>
          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </form>
       </div>
     </div>
   </div>
+
+  
+    
+      

@@ -10,6 +10,7 @@ import { ProyectosService } from 'src/app/service/proyectos.service';
 export class ProyectosComponent implements OnInit{
   isLogged = false;
   proyectos: Proyectos[] = [];
+  proyecto:any;
   verBtnAgregar: boolean = false;
   verBtnEditar: boolean = false;
   selectProyecto: any;
@@ -26,24 +27,24 @@ export class ProyectosComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-    this.verProyectos();
+    this.verProyecto();
   }
 
-  verProyectos(): void{
+  verProyecto(): void{
     this.proyectosService.getAll().subscribe (data => {this.proyectos = data});
   }
 
   agregarProyectos(proyectos: Proyectos){
     this.proyectosService.create(proyectos).subscribe((data) =>{
       this.proyectos.push(data);
-      this.verProyectos();
+      this.verProyecto();
     });
   }
 
   editarProyectos(proyectos: Proyectos){
     this.proyectosService.update(proyectos.id!,proyectos).subscribe((data) =>{
       this.proyectos.push(data);
-      this.verProyectos();
+      this.verProyecto();
     });
   }
 
@@ -51,7 +52,7 @@ export class ProyectosComponent implements OnInit{
     if (id != undefined) {
         this.proyectosService.delete(id).subscribe(
           data => {
-            this.verProyectos();
+            this.verProyecto();
           }); 
           } else {
             return;

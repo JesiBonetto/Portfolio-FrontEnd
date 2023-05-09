@@ -6,23 +6,21 @@
         <p>{{proyecto.descripcion}}</p>
     </div>
 
-    <div class="item-alling-end" >
+    <div class="box_crud" >
+        <!-- Boton que abre modal de CREAR -->
+    <button type="button" *ngIf="isLogged" class="btn" class="add-btn" (click)="agregar()" data-bs-toggle="modal" data-bs-target="#CrearProyectosModal"><i class="bi bi-plus-square"></i>
+    
+    </button>
+    </div>
+
+    <div class="box_crud" >
         <!-- Boton que abre modal de EDITAR -->
-  <button type="button" *ngIf="isLogged"   class="btn"  data-bs-toggle="modal" data-bs-target="#ProyectosModal" ><i class="bi bi-pencil-square"></i>
+  <button type="button" *ngIf="isLogged"   class="btn" class="editar-btn" (click)="editar(proyecto)" data-bs-toggle="modal" data-bs-target="#ProyectosModal" ><i class="bi bi-pencil-square"></i>
     
   </button>
-  </div>
-
-  <div class="item-alling-end" >
-    <!-- Boton que abre modal de CREAR -->
-<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#CrearProyectosModal"><i class="bi bi-plus-square"></i>
-
-</button>
-</div>
-
-<div class="item-alling-end" >
+  
     <!-- Boton para ELIMINAR -->
-<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal"><i class="bi bi-trash3"></i>
+<button type="button" *ngIf="isLogged" class="btn" class="delete-btn" (click)="delete(proyecto.id!)" data-bs-toggle="modal"><i class="bi bi-trash3"></i>
 </button>
 </div>
 

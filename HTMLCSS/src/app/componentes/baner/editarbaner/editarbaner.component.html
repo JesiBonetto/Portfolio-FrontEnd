@@ -10,13 +10,13 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="formFile" class="form-label">Elija una foto</label>
-                <input class="form-control" type="file" id="formFile">
+                <input [(ngModel)]="persona.baner" class="form-control" type="file" id="formFile" name="baner">
               </div>
          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </form>
       </div>

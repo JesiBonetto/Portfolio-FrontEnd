@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Redes } from 'src/app/modelo/redes';
 import { RedesService } from 'src/app/service/redes.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-agregarred',
@@ -9,33 +10,39 @@ import { RedesService } from 'src/app/service/redes.service';
 })
 export class AgregarredComponent implements OnInit {
   newRed: Redes = new Redes('', '', '');
+  form: FormGroup;
 
   @Output() onAgregarRed: EventEmitter<Redes> = new EventEmitter();
-  @Output() cerrarBtnAgrRed = new EventEmitter<boolean>();
+  @Output() cerrarBtnAgregar = new EventEmitter<boolean>();
 
-  constructor(private redesService: RedesService) {}
+  constructor(private redesService: RedesService,
+              private formBuilder: FormBuilder) {
+
+                ///Grupo de controles para el formulario.
+    this.form= this.formBuilder.group({
+      nombre:['', [Validators.required]],
+      imagen:['',[Validators.required]], 
+      url:['',[Validators.required]]
+   })
+    }
 
   ngOnInit(): void {}
 
   close(): void {
-    this.cerrarBtnAgrRed.emit(true);
+    this.cerrarBtnAgregar.emit(true);
   }
 
-  onSubmit(): void {
-    if (
-      this.newRed.nombre == '' ||
-      this.newRed.imagen == '' ||
-      this.newRed.url == ''
-    ) {
-      alert(
-        'La experiencia debe tener al menos un nombre, una imagen y una direccion url.'
-      );
-      return;
-    }
+  onEnviar(): void {
+    if (this.form.valid) {
+      this.newRed.nombre = this.form.get('nombre')?.value;
+      this.newRed.imagen = this.form.get('imagen')?.value;
+      this.newRed.url = this.form.get('url')?.value;
+
     this.redesService.create(this.newRed).subscribe((data) => {
       this.onAgregarRed.emit(data);
-      this.cerrarBtnAgrRed.emit(true);
+      this.cerrarBtnAgregar.emit(true);
     });
   }
+}
 
 }

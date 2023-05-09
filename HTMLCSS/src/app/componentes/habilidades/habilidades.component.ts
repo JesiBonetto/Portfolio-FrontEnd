@@ -11,6 +11,7 @@ import { HabilidadesService } from 'src/app/service/habilidades.service';
 export class HabilidadesComponent implements OnInit{
   isLogged = false;
   habilidades: Habilidades[] = [];
+  habilidad:any;
   data: any;
   verBtnAgregar: boolean = false;
   verBtnEditar: boolean = false;
@@ -52,7 +53,7 @@ export class HabilidadesComponent implements OnInit{
   }
 
 
-  delete (id: number) {
+  delete (id?: number) {
     if (id != undefined) {
         this.habilidadesService.delete(id).subscribe(
           data => {

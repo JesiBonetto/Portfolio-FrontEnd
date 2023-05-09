@@ -9,23 +9,23 @@
         <form (ngSubmit)="onSubmit()">
         <div class="modal-body">
             <div class="mb-3">
-                <label for="formFile" class="form-label">Ingrese una foto</label>
-                <input class="form-control" type="file" id="formFile">
+                <label for="foto" class="form-label">Ingrese una foto</label>
+                <input [(ngModel)]="persona.foto" class="form-control" type="file" id="foto" name="foto">
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Nombre y Apellido</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="nombre" class="form-label">Nombre y Apellido</label>
+                <input [(ngModel)]="persona.nombre" type="text" class="form-control" id="nombre" name="nombre" placeholder="">
               </div>
 
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Sobre Mi</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="sobreMi" class="form-label">Sobre Mi</label>
+                <input [(ngModel)]="persona.sobre_mi" class="form-control" id="sobreMi" name="sobreMi" rows="3">
               </div>
          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </form>
       </div>

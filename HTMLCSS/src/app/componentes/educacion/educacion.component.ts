@@ -9,7 +9,8 @@ import { EducacionService } from 'src/app/service/educacion.service';
 })
 export class EducacionComponent implements OnInit{
   isLogged = false;
-  educacion: Educacion[] = [];
+  educacion: Educacion [] = [];
+  educaciones: any;
   verBtnAgregar: boolean = false;
   verBtnEditar: boolean = false;
   selectEducacion: any;
@@ -28,25 +29,25 @@ export class EducacionComponent implements OnInit{
   
   
   ngOnInit(): void {
-    this.verEducacion();
+    this.verEducaciones();
     
   }
 
-  verEducacion(): void{
+  verEducaciones(): void{
     this.educacionService.getAll().subscribe (data => {this.educacion = data});
   }
 
   agregarEducacion(educacion: Educacion){
     this.educacionService.create(educacion).subscribe((data) =>{
       this.educacion.push(data);
-      this.verEducacion();
+      this.verEducaciones();
     });
   }
 
   editarEducacion(educacion: Educacion){
     this.educacionService.update(educacion.id!,educacion).subscribe((data) =>{
       this.educacion.push(data);
-      this.verEducacion();
+      this.verEducaciones();
     });
   }
 
@@ -54,7 +55,7 @@ export class EducacionComponent implements OnInit{
     if (id != undefined) {
         this.educacionService.delete(id).subscribe(
           data => {
-            this.verEducacion();
+            this.verEducaciones();
           }); 
           } else {
             return;

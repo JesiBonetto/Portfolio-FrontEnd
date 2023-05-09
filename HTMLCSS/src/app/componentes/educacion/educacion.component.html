@@ -7,24 +7,29 @@
         <img src="../assets/A.P.Icono.jpg" alt="Icono Argentina Programa" width="130" height="70">
       </div> -->
       <div class="col-8"><h2> {{educacion.academia}}</h2><h4>{{educacion.titulo}}</h4></div>
-    </div>
-      <div class="item-alling-end" >
+    
+
+    
+    
+      <div class="box_crud" >
       <!-- Boton que abre modal de EDITAR -->
-<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#EducacionModal" class="editar-btn" (click)="editar" ><i class="bi bi-pencil-square"></i> 
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#EducacionModal" class="editar-btn" (click)="editar(educacion)" ><i class="bi bi-pencil-square"></i> 
 </button>
 <!-- Boton para ELIMINAR -->
 <button type="button" *ngIf="isLogged" class="btn" data-bs-toggle="modal" 
-class="delete-btn" (click)="delete" ><i class="bi bi-trash3"></i>
+class="delete-btn" (click)="delete(educacion.id!)" ><i class="bi bi-trash3"></i>
+</button>
+</div>
+</div>
+
+<div class="box_crud" >
+  <!-- Boton que abre modal de CREAR -->
+<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#CrearEducacionModal" class="add-btn" (click)="agregar()" ><i class="bi bi-plus-square"></i>
 </button>
 </div>
 
-<div class="item-alling-end" >
-  <!-- Boton que abre modal de CREAR -->
-<button type="button" *ngIf="isLogged" class="btn"  data-bs-toggle="modal" data-bs-target="#CrearEducacionModal" (click)="agregar()" ><i class="bi bi-plus-square"></i>
-</button>
 </div>
-</div>
-  
+
 <app-agregaredu 
 *ngIf="verBtnAgregar"
 (onAgregarEducacion)="agregarEducacion($event)"
@@ -35,4 +40,7 @@ class="delete-btn" (click)="delete" ><i class="bi bi-trash3"></i>
 [educacion]="selectEducacion"
 (onEditarEdu)="editarEducacion($event)"
 (cerrarBtnEditar)="verBtnEditar = false"></app-editaredu>
+
+  
+
 

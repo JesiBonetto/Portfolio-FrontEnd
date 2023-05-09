@@ -6,32 +6,32 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Experiencia</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form (ngSubmit)="onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="form.valid && onEnviar()">
         <div class="modal-body">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Empresa</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="empresa" class="form-label">Empresa</label>
+                <input type="text" class="form-control" id="empresa" formControlName = "empresa" required>
               </div>
   
               <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Inicio</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="inicio" class="form-label">Inicio</label>
+                <input type="text" class="form-control" id="inicio" formControlName = "inicio" required>
               </div>
   
               <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Fin</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="fin" class="form-label">Fin</label>
+                <input type="text" class="form-control" id="fin" formControlName = "fin" required>
               </div>
   
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" rows="3" formControlName = "descripcion" required></textarea>
               </div>
          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </form>
       </div>

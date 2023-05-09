@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Educacion } from 'src/app/modelo/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-agregaredu',
@@ -9,30 +10,37 @@ import { EducacionService } from 'src/app/service/educacion.service';
 })
 export class AgregareduComponent implements OnInit {
   newEstudio: Educacion = new Educacion('','');
+  form: FormGroup;
 
   @Output() onAgregarEducacion: EventEmitter<Educacion> = new EventEmitter();
   @Output() cerrarBtnAgregar = new EventEmitter<boolean>();
 
-  constructor(private educacionService: EducacionService) {}
+  constructor(private educacionService: EducacionService,
+               private formBuilder: FormBuilder) {
+
+  ///Grupo de controles para el formulario.
+  this.form= this.formBuilder.group({
+    titulo:['', [Validators.required]],
+    academia:['',[Validators.required]]
+ })
+}
 
   ngOnInit(): void {}
 
-  cerrar(): void {
+  close(): void {
     this.cerrarBtnAgregar.emit(true);
   }
 
-  onSubmit(): void {
-    if (
-      this.newEstudio.titulo == '' ||
-      this.newEstudio.academia == '' 
-    ) {
-      alert('El estudio debe tener al menos un título o una academia.');
-      return;
-    }
+  onEnviar(): void {
+    if (this.form.valid) {
+      this.newEstudio.titulo = this.form.get('titulo')?.value;
+      this.newEstudio.academia = this.form.get('academia')?.value;
+
     this.educacionService.create(this.newEstudio).subscribe((data) => {
       this.onAgregarEducacion.emit(data);
       this.cerrarBtnAgregar.emit(true);
     });
   }
+}
 
 }

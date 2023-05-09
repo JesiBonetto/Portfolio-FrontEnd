@@ -9,19 +9,24 @@
         <form (ngSubmit)="onSubmit()">
         <div class="modal-body">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input [(ngModel)]="habilidades.nombre" type="text" class="form-control" id="nombre" name="nombre">
               </div>
 
               <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Porcentaje</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="porcentaje" class="form-label">Porcentaje</label>
+                <input [(ngModel)]="habilidades.porcentaje" type="number" class="form-control" id="porcentaje" name="porcentaje">
+              </div>
+
+              <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <input [(ngModel)]="habilidades.color" type="text" class="form-control" id="color" name="color">
               </div>
          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </form>
       </div>

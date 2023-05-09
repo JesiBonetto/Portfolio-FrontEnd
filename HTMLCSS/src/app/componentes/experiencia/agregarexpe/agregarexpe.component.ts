@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Experiencia } from 'src/app/modelo/experiencia';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-agregarexpe',
@@ -9,32 +10,43 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 })
 export class AgregarexpeComponent implements OnInit {
   newExperiencia: Experiencia = new Experiencia('', '', '', '', '');
+  form: FormGroup;
 
   @Output() onAgregarExperiencia: EventEmitter<Experiencia> = new EventEmitter();
-  @Output() cerrarBtnAgrExpe = new EventEmitter<boolean>();
+  @Output() cerrarBtnAgregar = new EventEmitter<boolean>();
 
-  constructor(private experienciaService: ExperienciaService) {}
+  constructor(private experienciaService: ExperienciaService,
+              private formBuilder: FormBuilder) {
+
+                ///Grupo de controles para el formulario.
+    this.form= this.formBuilder.group({
+      empresa:['', [Validators.required]], 
+      inicio:['',[Validators.required]],
+      fin:['',[Validators.required]],
+      descripcion:['',[Validators.required]],
+      logoEmpresa:['',[Validators.required]]
+   })
+              }
 
   ngOnInit(): void {}
 
   close(): void {
-    this.cerrarBtnAgrExpe.emit(true);
+    this.cerrarBtnAgregar.emit(true);
   }
 
-  onSubmit(): void {
-    if (
-      this.newExperiencia.empresa == '' ||
-      this.newExperiencia.descripcion == '' 
-    ) {
-      alert(
-        'La experiencia debe tener al menos una empresa y descripción.'
-      );
-      return;
-    }
-    this.experienciaService.create(this.newExperiencia).subscribe((data) => {
+  onEnviar(): void {
+    if (this.form.valid) {
+      this.newExperiencia.empresa = this.form.get('empresa')?.value;
+      this.newExperiencia.inicio = this.form.get('inicio')?.value;
+      this.newExperiencia.fin = this.form.get('fin')?.value;
+      this.newExperiencia.descripcion = this.form.get('descripcion')?.value;
+      this.newExperiencia.logoEmpresa = this.form.get('logoEmpresa')?.value;
+
+      this.experienciaService.create(this.newExperiencia).subscribe((data) => {
       this.onAgregarExperiencia.emit(data);
-      this.cerrarBtnAgrExpe.emit(true);
+      this.cerrarBtnAgregar.emit(true);
     });
   }
+}
 
 }

@@ -6,24 +6,30 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Habilidad</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="form.valid && onEnviar()">
         <div class="modal-body">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nuevo nombre"
-                formControlName = "habilidad" [(ngModel)]="newHabilidad.nombre">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text"  id="nombre" class="form-control"  placeholder="Nuevo nombre"
+                 formControlName = "nombre" required>
               </div>
   
               <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Porcentaje</label>
-                <input type=number min="0" max="100" class="form-control" id="formGroupExampleInput" 
-                formControlName = "porcentaje" [(ngModel)]="newHabilidad.porcentaje" >
+                <label for="porcentaje" class="form-label">Porcentaje</label>
+                <input type=number min="0" max="100" class="form-control" id="porcentaje" 
+                formControlName = "porcentaje" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <input type="text" class="form-control" id="color" placeholder="Nuevo color"
+                 formControlName = "color" required>
               </div>
          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </form>
       </div>

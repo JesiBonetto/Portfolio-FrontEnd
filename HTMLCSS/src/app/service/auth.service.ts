@@ -16,7 +16,7 @@ export class AuthService {
     this.getAdmin();
   }
   getAdmin(): void {
-    this.userService.getById(1).subscribe(data => {
+    this.userService.getById(2).subscribe(data => {
       this.adminUser = data;
     });
   }

@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit{
   isLogged = false;
   redes: Redes[] = [];
   verBtnAgregar: boolean = false;
+  red: any;
 
   constructor(private redesService: RedesService){
 
@@ -24,25 +25,25 @@ export class HeaderComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    this.verRedes();
+    this.verRed();
   }
 
-  verRedes(): void{
+  verRed(): void{
      this.redesService.getAll().subscribe (data => {this.redes = data});
   }
 
   agregarRed(redes: Redes){
     this.redesService.create(redes).subscribe((data) =>{
       this.redes.push(data);
-      this.verRedes();
+      this.verRed();
     });
   }
 
-  delete (id: number) {
+  delete (id?: number) {
     if (id != undefined) {
         this.redesService.delete(id).subscribe(
           data => {
-            this.verRedes();
+            this.verRed();
           }); 
           } else {
             return;

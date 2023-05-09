@@ -22,6 +22,7 @@ export class AgregarhabiComponent implements OnInit {
     this.form= this.formBuilder.group({
       nombre:['', [Validators.required]],
       porcentaje:['',[Validators.required, Validators.min(0), Validators.max(100)]], 
+      color:['',[Validators.required]]
    })
   }
 
@@ -31,20 +32,17 @@ export class AgregarhabiComponent implements OnInit {
     this.cerrarBtnAgrHabi.emit(true);
   }
 
-  onSubmit(): void {
-    if (
-      this.newHabilidad.nombre == '' ||
-      this.newHabilidad.porcentaje == 0
-    ) {
-      alert(
-        'La experiencia debe tener al menos un nombre y porcentaje.'
-      );
-      return;
-    }
+  onEnviar(): void {
+    if (this.form.valid) {
+      this.newHabilidad.nombre = this.form.get('nombre')?.value;
+      this.newHabilidad.porcentaje = this.form.get('porcentaje')?.value;
+      this.newHabilidad.color = this.form.get('color')?.value;
+    
     this.habilidadesService.create(this.newHabilidad).subscribe((data) => {
       this.onAgregarHabilidad.emit(data);
       this.cerrarBtnAgrHabi.emit(true);
     });
+  }
   }
 
 }
